@@ -44,6 +44,15 @@ const Navbar = () => {
                 {/* Nav Links */}
                 <div className="hidden md:flex items-center gap-1">
                     <Link
+                        to="/showcase"
+                        className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/showcase') ? 'bg-indigo-600/30 text-indigo-300 border border-indigo-500/40' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                            }`}
+                    >
+                        <Activity className="w-4 h-4 text-pink-400" />
+                        Industry Architecture
+                    </Link>
+
+                    <Link
                         to="/simulator"
                         className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/simulator') ? 'bg-indigo-600/30 text-indigo-300 border border-indigo-500/40' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                             }`}

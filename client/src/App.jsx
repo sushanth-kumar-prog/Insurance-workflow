@@ -6,6 +6,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 import LoginPage from './pages/LoginPage';
 import SimulatorPage from './pages/SimulatorPage';
+import IndustryShowcasePage from './pages/IndustryShowcasePage';
 import ClaimantPortal from './pages/ClaimantPortal';
 import HospitalPortal from './pages/HospitalPortal';
 import InsurerDashboard from './pages/InsurerDashboard';
@@ -14,7 +15,7 @@ import AnalyticsDashboard from './pages/AnalyticsDashboard';
 const HomeRedirect = () => {
   const { user, loading } = useAuth();
   if (loading) return null;
-  if (!user) return <Navigate to="/simulator" replace />;
+  if (!user) return <Navigate to="/showcase" replace />;
 
   switch (user.role) {
     case 'CLAIMANT':
@@ -41,6 +42,7 @@ function App() {
           <main className="px-4 sm:px-6 lg:px-8">
             <Routes>
               <Route path="/" element={<HomeRedirect />} />
+              <Route path="/showcase" element={<IndustryShowcasePage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/simulator" element={<SimulatorPage />} />
 
