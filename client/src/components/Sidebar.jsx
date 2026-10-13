@@ -68,11 +68,22 @@ export default function Sidebar({ open, onClose }) {
                             return (
                                 <div
                                     key={item.label}
-                                    title={`${item.label} — not yet built`}
-                                    className="w-[70px] flex flex-col items-center gap-1 py-2 rounded-xl text-[#B9C4D6] cursor-not-allowed"
+                                    className="group relative w-[70px] flex flex-col items-center gap-1 py-2 rounded-xl text-[#B9C4D6] cursor-not-allowed"
                                 >
                                     <Icon className="w-5 h-5" strokeWidth={1.75} />
                                     <span className="text-[10px] leading-tight text-center">{item.label}</span>
+
+                                    {/* Hover tooltip; non-clickable, announced to AT */}
+                                    <span
+                                        role="tooltip"
+                                        className="pointer-events-none absolute left-1/2 top-full z-50 mt-1 -translate-x-1/2
+                                                   whitespace-nowrap rounded-md bg-[#1A2130] px-2 py-1 text-[10px]
+                                                   font-semibold text-white opacity-0 shadow-lg transition-opacity
+                                                   group-hover:opacity-100 group-focus-within:opacity-100"
+                                    >
+                                        Coming Soon
+                                        <span className="absolute left-1/2 top-0 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[#1A2130]" />
+                                    </span>
                                 </div>
                             );
                         }

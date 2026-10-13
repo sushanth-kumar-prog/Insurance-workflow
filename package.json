@@ -4,7 +4,7 @@
   "description": "Insurance Claim Engine",
   "main": "index.js",
   "scripts": {
-    "test": "node --test --test-concurrency=1 tests/*.test.js",
+    "test": "node --test tests/*.test.js",
     "dev:server": "node src/dev-server.js",
     "start": "node src/server.js",
     "seed": "node src/seed.js"
