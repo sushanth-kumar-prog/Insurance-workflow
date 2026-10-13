@@ -46,6 +46,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Component classes live in @layer components so Tailwind utilities (which sit
+   in a later layer) can override them. Unlayered CSS would beat every utility. */
+@layer components {
+
 /* Glassmorphism utility */
 .glass-panel {
   background: rgba(30, 41, 59, 0.7);
@@ -266,3 +270,5 @@ textarea:focus {
   background: #10b981;
   color: white;
 }
+
+} /* end @layer components */

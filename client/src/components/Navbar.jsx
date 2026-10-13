@@ -33,7 +33,7 @@ const Navbar = () => {
                     <div className="p-2 rounded-xl bg-indigo-600/30 border border-indigo-500/40 text-indigo-400">
                         <Shield className="w-6 h-6" />
                     </div>
-                    <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-indigo-300 via-violet-400 to-[#a78bfa] bg-clip-text text-transparent">
                         InsureFlow
                     </span>
                     <span className="text-xs font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">
@@ -45,16 +45,16 @@ const Navbar = () => {
                 <div className="hidden md:flex items-center gap-1">
                     <Link
                         to="/showcase"
-                        className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/showcase') ? 'bg-indigo-600/30 text-indigo-300 border border-indigo-500/40' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                        className={`px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/showcase') ? 'border-b-2 border-violet-400 text-white bg-slate-800/70' : 'border-b-2 border-transparent text-slate-400 hover:text-white hover:bg-slate-800/60'
                             }`}
                     >
-                        <Activity className="w-4 h-4 text-pink-400" />
+                        <Activity className="w-4 h-4 text-violet-400" />
                         Industry Architecture
                     </Link>
 
                     <Link
                         to="/simulator"
-                        className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/simulator') ? 'bg-indigo-600/30 text-indigo-300 border border-indigo-500/40' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                        className={`px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/simulator') ? 'border-b-2 border-violet-400 text-white bg-slate-800/70' : 'border-b-2 border-transparent text-slate-400 hover:text-white hover:bg-slate-800/60'
                             }`}
                     >
                         <Calculator className="w-4 h-4" />
@@ -64,7 +64,7 @@ const Navbar = () => {
                     {user && (user.role === 'CLAIMANT' || user.role === 'SYSTEM') && (
                         <Link
                             to="/claimant"
-                            className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/claimant') ? 'bg-indigo-600/30 text-indigo-300 border border-indigo-500/40' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                            className={`px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/claimant') ? 'border-b-2 border-violet-400 text-white bg-slate-800/70' : 'border-b-2 border-transparent text-slate-400 hover:text-white hover:bg-slate-800/60'
                                 }`}
                         >
                             <FileText className="w-4 h-4" />
@@ -75,7 +75,7 @@ const Navbar = () => {
                     {user && (user.role === 'HOSPITAL_DESK' || user.role === 'SYSTEM') && (
                         <Link
                             to="/hospital"
-                            className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/hospital') ? 'bg-indigo-600/30 text-indigo-300 border border-indigo-500/40' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                            className={`px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/hospital') ? 'border-b-2 border-violet-400 text-white bg-slate-800/70' : 'border-b-2 border-transparent text-slate-400 hover:text-white hover:bg-slate-800/60'
                                 }`}
                         >
                             <Building2 className="w-4 h-4" />
@@ -86,7 +86,7 @@ const Navbar = () => {
                     {user && ['VERIFIER', 'MEDICAL_OFFICER', 'APPROVER', 'SYSTEM'].includes(user.role) && (
                         <Link
                             to="/insurer"
-                            className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/insurer') ? 'bg-indigo-600/30 text-indigo-300 border border-indigo-500/40' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                            className={`px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/insurer') ? 'border-b-2 border-violet-400 text-white bg-slate-800/70' : 'border-b-2 border-transparent text-slate-400 hover:text-white hover:bg-slate-800/60'
                                 }`}
                         >
                             <CheckSquare className="w-4 h-4" />
@@ -97,7 +97,7 @@ const Navbar = () => {
                     {user && ['VERIFIER', 'APPROVER', 'FINANCE', 'MEDICAL_OFFICER', 'SYSTEM'].includes(user.role) && (
                         <Link
                             to="/analytics"
-                            className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/analytics') ? 'bg-indigo-600/30 text-indigo-300 border border-indigo-500/40' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                            className={`px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1.5 ${isActive('/analytics') ? 'border-b-2 border-violet-400 text-white bg-slate-800/70' : 'border-b-2 border-transparent text-slate-400 hover:text-white hover:bg-slate-800/60'
                                 }`}
                         >
                             <BarChart3 className="w-4 h-4" />
