@@ -1,0 +1,35 @@
+# Render blueprint for the InsureFlow API.
+# Deploy with: https://render.com/deploy  (or connect the repo in the dashboard)
+#
+# Required environment variables:
+#   JWT_SECRET   - long random string (REQUIRED in production; app refuses to boot without it)
+#   MONGO_URI    - Atlas SRV connection string
+#
+# On Atlas, add Render's egress IPs to Network Access, or every query will time out.
+
+services:
+  - type: web
+    name: insureflow-api
+    runtime: node
+    plan: free
+    region: singapore
+    rootDir: .
+    buildCommand: npm ci --omit=dev
+    startCommand: node src/server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: CLIENT_URL
+        # Comma-separated allowed browser origins. Add your Vercel domain here.
+        sync: false
+      - key: COOKIE_SAMESITE
+        # Required when the API and frontend are on different domains,
+        # otherwise the auth cookie is dropped and every request 401s.
+        value: none
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGO_URI
+        sync: false

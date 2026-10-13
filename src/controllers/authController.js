@@ -78,10 +78,14 @@ async function login(req, res, next) {
 
         const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1d' });
 
+        // SameSite must be 'none' when the API is hosted on a different origin
+        // than the frontend (e.g. Vercel + Render); browsers drop a Strict cookie
+        // on cross-origin XHR, which would 401 every authenticated request.
+        const sameSite = (process.env.COOKIE_SAMESITE || 'lax').toLowerCase();
         res.cookie('token', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'Strict',
+            secure: process.env.NODE_ENV === 'production' || sameSite === 'none',
+            sameSite,
             maxAge: 24 * 60 * 60 * 1000 // 1 day
         });
 

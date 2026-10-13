@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import axios from 'axios';
+import api from '../api/client';
 
 /**
  * UploadSection — real multipart upload for claim documents.
@@ -54,7 +54,7 @@ export default function UploadSection({ claimId, onUploaded }) {
     selectedFiles.forEach((file) => formData.append('documents', file));
 
     try {
-      await axios.post(`/api/claims/${claimId}/documents`, formData, {
+      await api.post(`/claims/${claimId}/documents`, formData, {
         withCredentials: true,
         onUploadProgress: (e) => {
           if (e.total) setUploadProgress(Math.round((e.loaded / e.total) * 100));

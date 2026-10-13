@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import api from '../api/client';
 
 /**
  * LineItemDisputeModal — "Dispute" trigger on a deduction row.
@@ -43,8 +43,8 @@ export default function LineItemDisputeModal({ claimId, deduction, onDisputeFile
     setStatus('submitting');
     setErrorMsg('');
     try {
-      await axios.post(
-        `/api/claims/${claimId}/dispute-line-item`,
+      await api.post(
+        `/claims/${claimId}/dispute-line-item`,
         {
           reasonCode: deduction.reasonCode,
           policyClauseRef: deduction.policyClauseRef,

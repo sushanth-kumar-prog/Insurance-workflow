@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import api from '../api/client';
 
 /**
  * PersonaBar — one-click role switcher for demonstrations.
@@ -36,8 +36,8 @@ export default function PersonaBar({ onSwitch }) {
     setError('');
     setLoading(persona.role);
     try {
-      await axios.post(
-        '/api/auth/login',
+      await api.post(
+        '/auth/login',
         { email: persona.email, password: SHARED_PASSWORD },
         { withCredentials: true }
       );

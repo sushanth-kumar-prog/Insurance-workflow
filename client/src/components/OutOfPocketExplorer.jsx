@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import axios from 'axios';
+import api from '../api/client';
 
 /**
  * OutOfPocketExplorer — visual cost estimator for cataract claims.
@@ -65,7 +65,7 @@ export default function OutOfPocketExplorer({ policyId, policyDetails }) {
   });
 
   const evaluate = async (selectedLens) => {
-    const { data } = await axios.post('/api/simulator/evaluate', buildDraft(selectedLens), {
+    const { data } = await api.post('/simulator/evaluate', buildDraft(selectedLens), {
       withCredentials: true,
     });
     return data;
