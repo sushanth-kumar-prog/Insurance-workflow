@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
+import PersonaBar from './components/PersonaBar';
 
 import LoginPage from './pages/LoginPage';
 import SimulatorPage from './pages/SimulatorPage';
@@ -38,8 +39,10 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <div className="min-h-screen bg-[#0f172a] text-slate-100 font-sans selection:bg-indigo-500 selection:text-white">
+          {/* PersonaBar is fixed at the top, so the layout needs top padding. */}
+          <PersonaBar />
           <Navbar />
-          <main className="px-4 sm:px-6 lg:px-8">
+          <main className="px-4 sm:px-6 lg:px-8 pt-12">
             <Routes>
               <Route path="/" element={<HomeRedirect />} />
               <Route path="/showcase" element={<IndustryShowcasePage />} />

@@ -1,12 +1,18 @@
 const Claim = require('../models/Claim');
-const Policy = require('../models/Policy');
 const { toFhirClaim } = require('../utils/fhirMapper');
+const { isStaff } = require('../middleware/auth');
 
 async function getFhirClaim(req, res, next) {
     try {
         const { id } = req.params;
         const claim = await Claim.findById(id).populate('policyId');
         if (!claim) return res.status(404).json({ error: 'Claim not found' });
+
+        // Same ownership rule as the other claim endpoints: staff see any claim,
+        // everyone else only their own.
+        if (!isStaff(req.user.role) && String(claim.createdBy) !== String(req.user.id)) {
+            return res.status(403).json({ error: 'Permission denied for this claim' });
+        }
 
         if (!claim.policyId) return res.status(400).json({ error: 'Policy not attached' });
 

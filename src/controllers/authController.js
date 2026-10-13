@@ -2,12 +2,36 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const { JWT_SECRET } = require('../middleware/auth');
 
+const VALID_ROLES = ['CLAIMANT', 'HOSPITAL_DESK', 'VERIFIER', 'MEDICAL_OFFICER', 'APPROVER', 'FINANCE'];
+
+function validatePassword(password) {
+    if (typeof password !== 'string' || password.length < 8) {
+        return 'Password must be at least 8 characters';
+    }
+    if (password.length > 128) {
+        return 'Password must be at most 128 characters';
+    }
+    if (!/[a-z]/.test(password) || !/[A-Z]/.test(password) || !/\d/.test(password)) {
+        return 'Password must contain a lowercase letter, an uppercase letter and a digit';
+    }
+    return null;
+}
+
 async function register(req, res, next) {
     try {
         const { name, email, password, role, policyId, hospitalName } = req.body;
 
         if (!name || !email || !password || !role) {
             return res.status(400).json({ error: 'Missing required fields' });
+        }
+
+        if (!VALID_ROLES.includes(role)) {
+            return res.status(400).json({ error: 'Invalid role' });
+        }
+
+        const passwordError = validatePassword(password);
+        if (passwordError) {
+            return res.status(400).json({ error: passwordError });
         }
 
         const existingUser = await User.findOne({ email });

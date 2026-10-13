@@ -14,20 +14,21 @@ const userSchema = new mongoose.Schema({
     hospitalName: { type: String } // For hospital desk
 });
 
-// Hash password before save
-userSchema.pre('save', async function (next) {
-    if (!this.isModified('password')) return next();
-    try {
-        const salt = await bcrypt.genSalt(10);
-        this.password = await bcrypt.hash(this.password, salt);
-        next();
-    } catch (err) {
-        next(err);
-    }
+// Hash password before save. Mongoose 9 requires promise-style hooks here;
+// mixing in a `next` callback throws "next is not a function".
+userSchema.pre('save', async function () {
+    if (!this.isModified('password')) return;
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
 });
 
 // Compare password securely
 userSchema.methods.comparePassword = async function (candidatePassword) {
+    // A user with no stored hash (e.g. provisioned without a password) can never
+    // authenticate; return false rather than throwing on a null hash.
+    if (!this.password || typeof candidatePassword !== 'string') {
+        return false;
+    }
     return await bcrypt.compare(candidatePassword, this.password);
 };
 

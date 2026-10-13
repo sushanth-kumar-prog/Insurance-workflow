@@ -1,5 +1,11 @@
 node_modules
+uploads
 client/node_modules
 client/dist
 .git
 *.log
+
+# Never bake credentials into an image.
+.env
+.env.*
+!.env.example

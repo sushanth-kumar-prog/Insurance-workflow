@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { getFhirClaim, submitNhcx } = require('../controllers/nhcxController');
+const { submitNhcx } = require('../controllers/nhcxController');
 const { authenticateToken, authorizeRoles } = require('../middleware/auth');
 
+// Gateway router: NHCX submission only.
+// The FHIR claim read lives in claimRoutes, which owns all /api/claims/* paths.
 router.use(authenticateToken);
-router.get('/claims/:id/fhir', authorizeRoles('VERIFIER', 'APPROVER', 'FINANCE', 'SYSTEM', 'CLAIMANT'), getFhirClaim);
+
 router.post('/nhcx/submit', authorizeRoles('VERIFIER', 'APPROVER', 'FINANCE', 'SYSTEM'), submitNhcx);
 
 module.exports = router;

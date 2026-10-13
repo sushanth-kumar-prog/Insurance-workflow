@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import 'tailwindcss';
 
 :root {
   --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -82,22 +83,27 @@ body {
   background: #475569;
 }
 
-/* Input styles */
-input, select, textarea {
-  background-color: #0f172a !important;
-  border: 1px solid #334155 !important;
-  color: #f8fafc !important;
+/* Input styles.
+   Scoped away from range/file/checkbox so native and Tailwind-styled inputs
+   are not overridden by the global box model. */
+input:not([type='range']):not([type='file']):not([type='checkbox']),
+select,
+textarea {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #f8fafc;
   border-radius: 0.5rem;
   padding: 0.625rem 0.875rem;
   font-family: inherit;
   font-size: 0.875rem;
   transition: border-color 0.2s;
-  width: 100%;
 }
 
-input:focus, select:focus, textarea:focus {
+input:not([type='range']):not([type='file']):not([type='checkbox']),
+select,
+textarea:focus {
   outline: none;
-  border-color: #6366f1 !important;
+  border-color: #6366f1;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import api from '../api/client';
 import ClauseTable from '../components/ClauseTable';
+import SlaBreachPulse from '../components/SlaBreachPulse';
+import UploadSection from '../components/UploadSection';
+import OutOfPocketExplorer from '../components/OutOfPocketExplorer';
 import {
     FileText,
     CheckCircle,
@@ -15,6 +18,7 @@ const ClaimantPortal = () => {
     const [claims, setClaims] = useState([]);
     const [selectedClaim, setSelectedClaim] = useState(null);
     const [auditLogs, setAuditLogs] = useState([]);
+    const [sla, setSla] = useState(null);
     const [loading, setLoading] = useState(true);
     const [queryResponseNote, setQueryResponseNote] = useState('');
     const [actionSuccess, setActionSuccess] = useState('');
@@ -37,6 +41,8 @@ const ClaimantPortal = () => {
         try {
             const res = await api.get(`/claims/${claimId}/audit-trail`);
             setAuditLogs(res.data.logs || []);
+            // The server computes the SLA so the client can count down locally.
+            setSla(res.data.sla || null);
         } catch (err) {
             setAuditLogs([]);
         }
@@ -174,6 +180,21 @@ const ClaimantPortal = () => {
                                 })}
                             </div>
 
+                            {sla && (
+                                <div className="flex justify-center">
+                                    <SlaBreachPulse
+                                        remainingMinutes={sla.remainingMinutes}
+                                        paused={sla.isPaused}
+                                        slaType="PRE_AUTH"
+                                    />
+                                </div>
+                            )}
+
+                            <UploadSection
+                                claimId={selectedClaim._id}
+                                onUploaded={() => fetchAudit(selectedClaim._id)}
+                            />
+
                             {selectedClaim.status === 'QUERY_RAISED' && (
                                 <div className="p-4 rounded-xl bg-amber-950/40 border border-amber-500/40 space-y-3">
                                     <div className="flex items-center gap-2 font-bold text-amber-300 text-sm">
@@ -229,7 +250,11 @@ const ClaimantPortal = () => {
                                         </div>
                                     </div>
 
-                                    <ClauseTable deductions={selectedClaim.adjudicationResult.itemizedDeductions} />
+                                    <ClauseTable
+                                        deductions={selectedClaim.adjudicationResult.itemizedDeductions}
+                                        claimId={selectedClaim._id}
+                                        onDisputeFiled={() => fetchAudit(selectedClaim._id)}
+                                    />
                                 </>
                             ) : (
                                 <div className="p-6 text-center text-slate-400 text-sm">
@@ -237,6 +262,23 @@ const ClaimantPortal = () => {
                                 </div>
                             )}
                         </div>
+
+                        {/* Cost Explorer — driven by the live engine */}
+                        {selectedClaim.policyId && (
+                            <div className="glass-panel p-6 space-y-4">
+                                <OutOfPocketExplorer
+                                    policyId={selectedClaim.policyId._id || selectedClaim.policyId}
+                                    policyDetails={selectedClaim.policyId.sumInsuredBalance != null ? {
+                                        sumInsuredBalance: selectedClaim.policyId.sumInsuredBalance,
+                                        waitingPeriodMonths: selectedClaim.policyId.waitingPeriodMonths ?? 24,
+                                        elapsedMonths: 36,
+                                        iolTariffCap: selectedClaim.policyId.iolTariffCap ?? 15000,
+                                        roomCap: selectedClaim.policyId.roomCap ?? 5000,
+                                        procedureSublimits: {}
+                                    } : undefined}
+                                />
+                            </div>
+                        )}
 
                         {/* Audit Trail Timeline */}
                         <div className="glass-panel p-6 space-y-4">

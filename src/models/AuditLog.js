@@ -12,17 +12,20 @@ const auditLogSchema = new mongoose.Schema({
 });
 
 // Append-only constraint
-auditLogSchema.pre('findOneAndUpdate', function (next) {
-    next(new Error('AuditLogs cannot be updated.'));
+auditLogSchema.pre('findOneAndUpdate', function () {
+    throw new Error('AuditLogs cannot be updated.');
 });
-auditLogSchema.pre('updateOne', function (next) {
-    next(new Error('AuditLogs cannot be updated.'));
+auditLogSchema.pre('updateOne', function () {
+    throw new Error('AuditLogs cannot be updated.');
 });
-auditLogSchema.pre('remove', function (next) {
-    next(new Error('AuditLogs cannot be deleted.'));
+auditLogSchema.pre('deleteOne', function () {
+    throw new Error('AuditLogs cannot be deleted.');
 });
-auditLogSchema.pre('deleteOne', function (next) {
-    next(new Error('AuditLogs cannot be deleted.'));
+auditLogSchema.pre('deleteMany', function () {
+    throw new Error('AuditLogs cannot be deleted.');
+});
+auditLogSchema.pre('findOneAndDelete', function () {
+    throw new Error('AuditLogs cannot be deleted.');
 });
 
 module.exports = mongoose.model('AuditLog', auditLogSchema);

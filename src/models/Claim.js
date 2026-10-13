@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const claimSchema = new mongoose.Schema({
     claimNumber: { type: String, unique: true, index: true, required: true },
     policyId: { type: mongoose.Schema.Types.ObjectId, ref: 'Policy', required: true },
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', index: true }, // Owning user (claimant / hospital desk)
     claimType: { type: String, enum: ['CASHLESS', 'REIMBURSEMENT'], required: true },
     status: {
         type: String,
@@ -30,7 +31,27 @@ const claimSchema = new mongoose.Schema({
     flags: {
         missingDocuments: [String],
         fraudWarnings: [String]
-    }
+    },
+    documents: [{
+        filename: String,
+        originalName: String,
+        mimeType: String,
+        size: Number,
+        uploadedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+        uploadedAt: { type: Date, default: Date.now }
+    }],
+    // Disputes raised against individual deduction line items.
+    disputes: [{
+        reasonCode: String,
+        policyClauseRef: String,
+        itemCode: String,
+        disputeReason: String,
+        supportingNote: String,
+        filedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+        filedByRole: String,
+        status: { type: String, enum: ['OPEN', 'UPHELD', 'REJECTED'], default: 'OPEN' },
+        filedAt: { type: Date, default: Date.now }
+    }]
 });
 
 module.exports = mongoose.model('Claim', claimSchema);
