@@ -1,46 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 
 :root {
-  --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  
-  --bg-dark: #0f172a;
-  --bg-card: #1e293b;
-  --bg-card-hover: #334155;
-  --border-color: #334155;
-  --border-glow: rgba(99, 102, 241, 0.3);
-
-  --primary: #6366f1;
-  --primary-hover: #4f46e5;
-  --primary-light: rgba(99, 102, 241, 0.15);
-  
-  --success: #10b981;
-  --success-bg: rgba(16, 185, 129, 0.15);
-  
-  --warning: #f59e0b;
-  --warning-bg: rgba(245, 158, 11, 0.15);
-  
-  --danger: #ef4444;
-  --danger-bg: rgba(239, 68, 68, 0.15);
-
-  --info: #3b82f6;
-  --info-bg: rgba(59, 130, 246, 0.15);
-
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
+  /* InsureFlow light design tokens */
+  --if-primary: #1565D8;
+  --if-primary-soft: #EBF4FD;
+  --if-surface: #FFFFFF;
+  --if-border: #E0ECF8;
+  --if-text: #1A2130;
+  --if-muted: #6B7A94;
+  --if-shadow: 0 1px 4px rgba(21, 101, 216, 0.08);
+  --if-success: #16A34A;
+  --if-warning: #D97706;
+  --if-danger: #DC2626;
+  --if-teal: #0D9488;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer base {
+  /* In @layer base so Tailwind utilities (mx-auto, p-8, ...) can override it.
+     Unlayered, `* { margin: 0; padding: 0 }` silently kills every spacing
+     and centring utility in the app. */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, .if-num {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  }
 }
 
 body {
-  font-family: var(--font-family);
-  background-color: var(--bg-dark);
-  color: var(--text-main);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--if-primary-soft);
+  color: var(--if-text);
   min-height: 100vh;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -50,25 +44,25 @@ body {
    in a later layer) can override them. Unlayered CSS would beat every utility. */
 @layer components {
 
-/* Glassmorphism utility */
+/* Surfaces */
 .glass-panel {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1rem;
+  background: var(--if-surface);
+  border: 1px solid var(--if-border);
+  border-radius: 12px;
+  box-shadow: var(--if-shadow);
 }
 
 .glass-card {
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.75rem;
+  background: var(--if-surface);
+  border: 1px solid var(--if-border);
+  border-radius: 12px;
+  box-shadow: var(--if-shadow);
   transition: all 0.2s ease-in-out;
 }
 
 .glass-card:hover {
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 0 15px rgba(99, 102, 241, 0.1);
+  border-color: #B9D6F5;
+  box-shadow: 0 4px 12px rgba(21, 101, 216, 0.12);
 }
 
 /* Custom scrollbars */
@@ -77,14 +71,14 @@ body {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #EAF2FB;
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #C9DCF2;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #A9C6E8;
 }
 
 /* Input styles.
@@ -93,9 +87,9 @@ body {
 input:not([type='range']):not([type='file']):not([type='checkbox']),
 select,
 textarea {
-  background-color: #0f172a;
-  border: 1px solid #334155;
-  color: #f8fafc;
+  background-color: #FFFFFF;
+  border: 1px solid var(--if-border);
+  color: var(--if-text);
   border-radius: 0.5rem;
   padding: 0.625rem 0.875rem;
   font-family: inherit;
@@ -107,13 +101,13 @@ input:not([type='range']):not([type='file']):not([type='checkbox']),
 select,
 textarea:focus {
   outline: none;
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  border-color: var(--if-primary);
+  box-shadow: 0 0 0 3px rgba(21, 101, 216, 0.12);
 }
 
 /* Buttons */
 .btn-primary {
-  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  background: linear-gradient(135deg, #1E74E8, #1565D8);
   color: white;
   font-weight: 600;
   padding: 0.625rem 1.25rem;
@@ -127,18 +121,18 @@ textarea:focus {
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #4f46e5, #4338ca);
+  background: linear-gradient(135deg, #1565D8, #0F4EAA);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
 }
 
 .btn-secondary {
-  background: #334155;
-  color: #f8fafc;
+  background: #EBF4FD;
+  color: var(--if-primary);
   font-weight: 600;
   padding: 0.625rem 1.25rem;
   border-radius: 0.5rem;
-  border: 1px solid #475569;
+  border: 1px solid #C9DCF2;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -147,7 +141,7 @@ textarea:focus {
 }
 
 .btn-secondary:hover {
-  background: #475569;
+  background: #DFEBFA;
 }
 
 .btn-success {
@@ -211,11 +205,11 @@ textarea:focus {
   gap: 0.35rem;
 }
 
-.badge-primary { background: rgba(99, 102, 241, 0.2); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); }
-.badge-success { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
-.badge-warning { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
-.badge-danger { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
-.badge-info { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+.badge-primary { background: #EBF4FD; color: #1565D8; border: 1px solid #B9D6F5; }
+.badge-success { background: #E7F7EE; color: #15803D; border: 1px solid #BBE7CB; }
+.badge-warning { background: #FEF3E2; color: #B45309; border: 1px solid #F5D9AE; }
+.badge-danger { background: #FDECEC; color: #B91C1C; border: 1px solid #F5C2C2; }
+.badge-info { background: #EBF4FD; color: #1D4ED8; border: 1px solid #B9D6F5; }
 
 /* Timeline Step Connector */
 .timeline-step {
@@ -231,7 +225,7 @@ textarea:focus {
   left: 50%;
   width: 100%;
   height: 3px;
-  background: #334155;
+  background: var(--if-border);
   z-index: 1;
 }
 
@@ -247,8 +241,8 @@ textarea:focus {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: #1e293b;
-  border: 2px solid #334155;
+  background: #FFFFFF;
+  border: 2px solid var(--if-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -259,8 +253,8 @@ textarea:focus {
 }
 
 .timeline-step.active .timeline-icon {
-  border-color: #6366f1;
-  background: #4f46e5;
+  border-color: var(--if-primary);
+  background: var(--if-primary);
   color: white;
   box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
 }

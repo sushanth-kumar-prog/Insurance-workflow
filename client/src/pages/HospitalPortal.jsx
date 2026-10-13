@@ -105,19 +105,19 @@ const HospitalPortal = () => {
             {/* Header */}
             <div className="glass-panel p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <div className="flex items-center gap-2 text-indigo-400 font-semibold text-sm mb-1">
+                    <div className="flex items-center gap-2 text-[#1565D8] font-semibold text-sm mb-1">
                         <Building2 className="w-4 h-4" />
                         Hospital Provider Cashless Desk Portal
                     </div>
                     <h1 className="text-2xl font-extrabold text-white">Cashless Pre-Auth & Submission Desk</h1>
-                    <p className="text-slate-400 text-sm mt-1">
+                    <p className="text-[#6B7A94] text-sm mt-1">
                         Submit pre-authorisations with procedural checklists and track live query notifications within IRDAI 1-hour statutory windows.
                     </p>
                 </div>
             </div>
 
             {msg && (
-                <div className="p-4 rounded-lg bg-emerald-950/40 border border-emerald-500/40 text-emerald-400 text-sm">
+                <div className="p-4 rounded-lg bg-[#E7F7EE] border border-[#BBE7CB] text-emerald-400 text-sm">
                     ✓ {msg}
                 </div>
             )}
@@ -126,14 +126,14 @@ const HospitalPortal = () => {
                 {/* Left: New Cashless Pre-Auth Submission */}
                 <div className="lg:col-span-7 space-y-6">
                     <form onSubmit={handleCreateClaim} className="glass-panel p-6 space-y-6">
-                        <h2 className="text-base font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
-                            <Plus className="w-5 h-5 text-indigo-400" />
+                        <h2 className="text-base font-bold text-white border-b border-[#E0ECF8] pb-3 flex items-center gap-2">
+                            <Plus className="w-5 h-5 text-[#1565D8]" />
                             New Cashless Pre-Authorisation Submission
                         </h2>
 
                         <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-xs font-semibold text-slate-300 mb-1">Claim Reference Number</label>
+                                <label className="block text-xs font-semibold text-[#1A2130] mb-1">Claim Reference Number</label>
                                 <input
                                     type="text"
                                     value={claimNumber}
@@ -143,7 +143,7 @@ const HospitalPortal = () => {
                             </div>
 
                             <div>
-                                <label className="block text-xs font-semibold text-slate-300 mb-1">Claim Type</label>
+                                <label className="block text-xs font-semibold text-[#1A2130] mb-1">Claim Type</label>
                                 <select value={claimType} onChange={(e) => setClaimType(e.target.value)}>
                                     <option value="CASHLESS">CASHLESS (Statutory 1-Hr Mandate)</option>
                                     <option value="REIMBURSEMENT">REIMBURSEMENT</option>
@@ -151,7 +151,7 @@ const HospitalPortal = () => {
                             </div>
 
                             <div>
-                                <label className="block text-xs font-semibold text-slate-300 mb-1">Procedure Type</label>
+                                <label className="block text-xs font-semibold text-[#1A2130] mb-1">Procedure Type</label>
                                 <input
                                     type="text"
                                     value={procedureType}
@@ -160,7 +160,7 @@ const HospitalPortal = () => {
                             </div>
 
                             <div>
-                                <label className="block text-xs font-semibold text-slate-300 mb-1">Eye Side</label>
+                                <label className="block text-xs font-semibold text-[#1A2130] mb-1">Eye Side</label>
                                 <select value={eyeSide} onChange={(e) => setEyeSide(e.target.value)}>
                                     <option value="LEFT">Left Eye</option>
                                     <option value="RIGHT">Right Eye</option>
@@ -169,13 +169,13 @@ const HospitalPortal = () => {
                         </div>
 
                         {/* Procedural Checklist */}
-                        <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
-                            <div className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                                <ListChecks className="w-4 h-4 text-indigo-400" />
+                        <div className="p-4 rounded-xl bg-white/80 border border-[#E0ECF8] space-y-3">
+                            <div className="text-xs font-bold text-[#1A2130] uppercase tracking-wider flex items-center gap-1.5">
+                                <ListChecks className="w-4 h-4 text-[#1565D8]" />
                                 Procedural Mandatory Document Checklist
                             </div>
                             <div className="flex gap-6">
-                                <label className="flex items-center gap-2 text-xs font-semibold text-slate-300 cursor-pointer">
+                                <label className="flex items-center gap-2 text-xs font-semibold text-[#1A2130] cursor-pointer">
                                     <input
                                         type="checkbox"
                                         checked={hasBiometry}
@@ -185,7 +185,7 @@ const HospitalPortal = () => {
                                     Biometry Report
                                 </label>
 
-                                <label className="flex items-center gap-2 text-xs font-semibold text-slate-300 cursor-pointer">
+                                <label className="flex items-center gap-2 text-xs font-semibold text-[#1A2130] cursor-pointer">
                                     <input
                                         type="checkbox"
                                         checked={hasIolSticker}
@@ -199,14 +199,14 @@ const HospitalPortal = () => {
 
                         {/* Bill Summary */}
                         <div className="space-y-3">
-                            <div className="text-xs font-bold text-slate-300 uppercase tracking-wider">Estimated Bill Items ({billItems.length})</div>
+                            <div className="text-xs font-bold text-[#1A2130] uppercase tracking-wider">Estimated Bill Items ({billItems.length})</div>
                             {billItems.map((item, idx) => (
                                 <div key={idx} className="p-2.5 glass-card flex justify-between items-center text-xs">
                                     <div>
-                                        <span className="font-semibold text-slate-200">{item.description}</span>
-                                        <span className="text-slate-500 font-mono ml-2">({item.category})</span>
+                                        <span className="font-semibold text-[#1A2130]">{item.description}</span>
+                                        <span className="text-[#6B7A94] font-mono ml-2">({item.category})</span>
                                     </div>
-                                    <span className="font-mono font-bold text-slate-300">₹{item.billedAmount?.toLocaleString()}</span>
+                                    <span className="font-mono font-bold text-[#1A2130]">₹{item.billedAmount?.toLocaleString()}</span>
                                 </div>
                             ))}
                         </div>
@@ -220,15 +220,15 @@ const HospitalPortal = () => {
 
                 {/* Right: Hospital Active Submissions Board */}
                 <div className="lg:col-span-5 space-y-4">
-                    <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider">Active Hospital Submissions ({claims.length})</h2>
+                    <h2 className="text-sm font-bold text-[#6B7A94] uppercase tracking-wider">Active Hospital Submissions ({claims.length})</h2>
 
                     <div className="space-y-3 max-h-[600px] overflow-y-auto pr-1">
                         {claims.map((c) => (
                             <div key={c._id} className="p-4 glass-card space-y-2">
                                 <div className="flex justify-between items-start">
                                     <div>
-                                        <span className="font-bold text-slate-200 font-mono text-sm">{c.claimNumber}</span>
-                                        <div className="text-xs text-slate-400 mt-0.5">{c.procedureDetails?.procedureType}</div>
+                                        <span className="font-bold text-[#1A2130] font-mono text-sm">{c.claimNumber}</span>
+                                        <div className="text-xs text-[#6B7A94] mt-0.5">{c.procedureDetails?.procedureType}</div>
                                     </div>
                                     <span className={`badge ${c.status === 'APPROVED' ? 'badge-success' :
                                             c.status === 'QUERY_RAISED' ? 'badge-warning' : 'badge-primary'
@@ -238,14 +238,14 @@ const HospitalPortal = () => {
                                 </div>
 
                                 {c.status === 'QUERY_RAISED' && (
-                                    <div className="p-2.5 rounded bg-amber-950/40 border border-amber-500/30 text-amber-300 text-xs flex items-center gap-2">
+                                    <div className="p-2.5 rounded bg-[#FEF3E2] border border-[#F5D9AE] text-[#B45309] text-xs flex items-center gap-2">
                                         <AlertCircle className="w-4 h-4 shrink-0 text-amber-400" />
                                         <span>Document Query Raised by Verifier — Timer Paused.</span>
                                     </div>
                                 )}
 
                                 {c.adjudicationResult && (
-                                    <div className="flex justify-between items-center text-xs text-slate-300 pt-2 border-t border-slate-800">
+                                    <div className="flex justify-between items-center text-xs text-[#1A2130] pt-2 border-t border-[#E0ECF8]">
                                         <span>Approved: <strong className="text-emerald-400">₹{c.adjudicationResult.approvedAmount?.toLocaleString()}</strong></span>
                                         <span>Deductions: <strong className="text-red-400">₹{c.adjudicationResult.totalDeductions?.toLocaleString()}</strong></span>
                                     </div>

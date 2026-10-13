@@ -97,21 +97,21 @@ const ClaimantPortal = () => {
             {/* Header */}
             <div className="glass-panel p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <div className="flex items-center gap-2 text-indigo-400 font-semibold text-sm mb-1">
+                    <div className="flex items-center gap-2 text-[#1565D8] font-semibold text-sm mb-1">
                         <FileText className="w-4 h-4" />
                         Patient & Claimant Transparency Dashboard
                     </div>
                     <h1 className="text-2xl font-extrabold text-white">My Claims & Real-Time Tracker</h1>
-                    <p className="text-slate-400 text-sm mt-1">
+                    <p className="text-[#6B7A94] text-sm mt-1">
                         Track statutory timelines, transparent clause deductions, and submit document query responses directly.
                     </p>
                 </div>
             </div>
 
             {actionSuccess && (
-                <div className="p-4 rounded-lg bg-emerald-950/40 border border-emerald-500/40 text-emerald-400 text-sm flex items-center justify-between">
+                <div className="p-4 rounded-lg bg-[#E7F7EE] border border-[#BBE7CB] text-emerald-400 text-sm flex items-center justify-between">
                     <span>✓ {actionSuccess}</span>
-                    <button onClick={() => setActionSuccess('')} className="text-xs font-bold text-emerald-300">Dismiss</button>
+                    <button onClick={() => setActionSuccess('')} className="text-xs font-bold text-[#15803D]">Dismiss</button>
                 </div>
             )}
 
@@ -119,10 +119,10 @@ const ClaimantPortal = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 {/* Left: Claim Selection List */}
                 <div className="lg:col-span-4 space-y-4">
-                    <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider">Active Claim Files ({claims.length})</h2>
+                    <h2 className="text-sm font-bold text-[#6B7A94] uppercase tracking-wider">Active Claim Files ({claims.length})</h2>
 
                     {claims.length === 0 ? (
-                        <div className="glass-panel p-6 text-center text-slate-400 text-sm">
+                        <div className="glass-panel p-6 text-center text-[#6B7A94] text-sm">
                             No active claims found. Create or submit a claim via Hospital Desk or Simulator.
                         </div>
                     ) : (
@@ -134,15 +134,15 @@ const ClaimantPortal = () => {
                                     }`}
                             >
                                 <div className="flex justify-between items-start mb-2">
-                                    <span className="font-bold text-slate-200 font-mono text-sm">{c.claimNumber}</span>
+                                    <span className="font-bold text-[#1A2130] font-mono text-sm">{c.claimNumber}</span>
                                     <span className={`badge ${c.status === 'APPROVED' ? 'badge-success' :
                                             c.status === 'QUERY_RAISED' ? 'badge-warning' : 'badge-primary'
                                         }`}>
                                         {c.status}
                                     </span>
                                 </div>
-                                <div className="text-xs text-slate-400">Type: {c.claimType}</div>
-                                <div className="text-xs text-indigo-400 mt-2 font-medium">
+                                <div className="text-xs text-[#6B7A94]">Type: {c.claimType}</div>
+                                <div className="text-xs text-[#1565D8] mt-2 font-medium">
                                     Procedure: {c.procedureDetails?.procedureType || 'Eye Surgery'}
                                 </div>
                             </div>
@@ -155,9 +155,9 @@ const ClaimantPortal = () => {
                     <div className="lg:col-span-8 space-y-6">
                         {/* Visual Step Timeline */}
                         <div className="glass-panel p-6 space-y-6">
-                            <h2 className="text-base font-bold text-white border-b border-slate-800 pb-3 flex items-center justify-between">
+                            <h2 className="text-base font-bold text-white border-b border-[#E0ECF8] pb-3 flex items-center justify-between">
                                 <span>Claim Lifecycle Timeline</span>
-                                <span className="text-xs text-slate-400 font-mono">Claim ID: {selectedClaim.claimNumber}</span>
+                                <span className="text-xs text-[#6B7A94] font-mono">Claim ID: {selectedClaim.claimNumber}</span>
                             </h2>
 
                             <div className="flex justify-between items-center py-4 px-2">
@@ -174,7 +174,7 @@ const ClaimantPortal = () => {
                                                     <span className="text-xs font-bold">{idx + 1}</span>
                                                 )}
                                             </div>
-                                            <div className="text-xs font-semibold text-slate-300 mt-1">{s.label}</div>
+                                            <div className="text-xs font-semibold text-[#1A2130] mt-1">{s.label}</div>
                                         </div>
                                     );
                                 })}
@@ -196,12 +196,12 @@ const ClaimantPortal = () => {
                             />
 
                             {selectedClaim.status === 'QUERY_RAISED' && (
-                                <div className="p-4 rounded-xl bg-amber-950/40 border border-amber-500/40 space-y-3">
-                                    <div className="flex items-center gap-2 font-bold text-amber-300 text-sm">
+                                <div className="p-4 rounded-xl bg-[#FEF3E2] border border-[#F5D9AE] space-y-3">
+                                    <div className="flex items-center gap-2 font-bold text-[#B45309] text-sm">
                                         <AlertCircle className="w-4 h-4 text-amber-400" />
                                         Query Raised by Medical Officer — Response Required
                                     </div>
-                                    <p className="text-xs text-slate-300">
+                                    <p className="text-xs text-[#1A2130]">
                                         SLA Clock is currently <strong>PAUSED</strong>. Please upload/submit the missing biometry or IOL sticker document to resume evaluation.
                                     </p>
                                     <div className="flex gap-2">
@@ -223,7 +223,7 @@ const ClaimantPortal = () => {
 
                         {/* Financial Summary & Itemized Deductions */}
                         <div className="glass-panel p-6 space-y-6">
-                            <h2 className="text-base font-bold text-white border-b border-slate-800 pb-3">
+                            <h2 className="text-base font-bold text-white border-b border-[#E0ECF8] pb-3">
                                 Transparent Itemised Adjudication Breakdown
                             </h2>
 
@@ -231,18 +231,18 @@ const ClaimantPortal = () => {
                                 <>
                                     <div className="grid grid-cols-3 gap-4 text-center">
                                         <div className="p-3 glass-card">
-                                            <div className="text-xs text-slate-400">Total Billed</div>
-                                            <div className="text-lg font-bold text-slate-200 mt-1">
+                                            <div className="text-xs text-[#6B7A94]">Total Billed</div>
+                                            <div className="text-lg font-bold text-[#1A2130] mt-1">
                                                 ₹{selectedClaim.adjudicationResult.totalBilled?.toLocaleString()}
                                             </div>
                                         </div>
-                                        <div className="p-3 glass-card bg-emerald-950/20 border-emerald-500/30">
+                                        <div className="p-3 glass-card bg-emerald-950/20 border-[#BBE7CB]">
                                             <div className="text-xs text-emerald-400 font-semibold">Approved Payable</div>
                                             <div className="text-xl font-extrabold text-emerald-400 mt-1">
                                                 ₹{selectedClaim.adjudicationResult.approvedAmount?.toLocaleString()}
                                             </div>
                                         </div>
-                                        <div className="p-3 glass-card bg-red-950/20 border-red-500/30">
+                                        <div className="p-3 glass-card bg-red-950/20 border-[#F5C2C2]">
                                             <div className="text-xs text-red-400 font-semibold">Total Deductions</div>
                                             <div className="text-xl font-extrabold text-red-400 mt-1">
                                                 ₹{selectedClaim.adjudicationResult.totalDeductions?.toLocaleString()}
@@ -257,7 +257,7 @@ const ClaimantPortal = () => {
                                     />
                                 </>
                             ) : (
-                                <div className="p-6 text-center text-slate-400 text-sm">
+                                <div className="p-6 text-center text-[#6B7A94] text-sm">
                                     Adjudication has not been executed on this claim draft yet.
                                 </div>
                             )}
@@ -282,20 +282,20 @@ const ClaimantPortal = () => {
 
                         {/* Audit Trail Timeline */}
                         <div className="glass-panel p-6 space-y-4">
-                            <h3 className="text-sm font-bold text-slate-200 border-b border-slate-800 pb-2">
+                            <h3 className="text-sm font-bold text-[#1A2130] border-b border-[#E0ECF8] pb-2">
                                 Immutable Append-Only Audit History ({auditLogs.length} Events)
                             </h3>
                             <div className="space-y-2 max-h-60 overflow-y-auto">
                                 {auditLogs.map((log, idx) => (
                                     <div key={idx} className="p-2.5 glass-card flex items-center justify-between text-xs">
                                         <div>
-                                            <span className="font-semibold text-indigo-300">{log.fromState} ➔ {log.toState}</span>
-                                            <span className="text-slate-400 ml-2">({log.action})</span>
-                                            {log.notes && <div className="text-slate-400 italic text-[11px] mt-0.5">{log.notes}</div>}
+                                            <span className="font-semibold text-[#1565D8]">{log.fromState} ➔ {log.toState}</span>
+                                            <span className="text-[#6B7A94] ml-2">({log.action})</span>
+                                            {log.notes && <div className="text-[#6B7A94] italic text-[11px] mt-0.5">{log.notes}</div>}
                                         </div>
                                         <div className="text-right">
                                             <div className="badge badge-info">{log.actorRole}</div>
-                                            <div className="text-[10px] text-slate-500 font-mono mt-0.5">
+                                            <div className="text-[10px] text-[#6B7A94] font-mono mt-0.5">
                                                 {new Date(log.timestamp).toLocaleString()}
                                             </div>
                                         </div>
@@ -305,7 +305,7 @@ const ClaimantPortal = () => {
                         </div>
                     </div>
                 ) : (
-                    <div className="lg:col-span-8 glass-panel p-12 text-center text-slate-500 flex flex-col items-center justify-center">
+                    <div className="lg:col-span-8 glass-panel p-12 text-center text-[#6B7A94] flex flex-col items-center justify-center">
                         <FileCheck className="w-12 h-12 text-slate-700 mb-2" />
                         Select a claim from the left sidebar to inspect details.
                     </div>

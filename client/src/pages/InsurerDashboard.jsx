@@ -106,19 +106,19 @@ const InsurerDashboard = () => {
             {/* Header */}
             <div className="glass-panel p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <div className="flex items-center gap-2 text-indigo-400 font-semibold text-sm mb-1">
+                    <div className="flex items-center gap-2 text-[#1565D8] font-semibold text-sm mb-1">
                         <CheckSquare className="w-4 h-4" />
                         Insurer & Medical Officer Operations Queue
                     </div>
                     <h1 className="text-2xl font-extrabold text-white">Insurer Adjudication & SLA Control Dashboard</h1>
-                    <p className="text-slate-400 text-sm mt-1">
-                        Active Role: <span className="text-indigo-300 font-bold font-mono">{user?.role}</span>. Review pre-auths, execute rule engines, raise queries, and enforce IRDAI SLA deadlines.
+                    <p className="text-[#6B7A94] text-sm mt-1">
+                        Active Role: <span className="text-[#1565D8] font-bold font-mono">{user?.role}</span>. Review pre-auths, execute rule engines, raise queries, and enforce IRDAI SLA deadlines.
                     </p>
                 </div>
             </div>
 
             {actionMsg && (
-                <div className="p-4 rounded-lg bg-emerald-950/40 border border-emerald-500/40 text-emerald-400 text-sm">
+                <div className="p-4 rounded-lg bg-[#E7F7EE] border border-[#BBE7CB] text-emerald-400 text-sm">
                     ✓ {actionMsg}
                 </div>
             )}
@@ -128,8 +128,8 @@ const InsurerDashboard = () => {
                 {/* Left: Queue List */}
                 <div className="lg:col-span-4 space-y-4">
                     <div className="flex items-center justify-between">
-                        <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider">Claims Processing Queue ({claims.length})</h2>
-                        <button onClick={fetchClaimsQueue} className="text-xs text-indigo-400 hover:underline">Refresh</button>
+                        <h2 className="text-sm font-bold text-[#6B7A94] uppercase tracking-wider">Claims Processing Queue ({claims.length})</h2>
+                        <button onClick={fetchClaimsQueue} className="text-xs text-[#1565D8] hover:underline">Refresh</button>
                     </div>
 
                     <div className="space-y-3 max-h-[700px] overflow-y-auto pr-1">
@@ -143,12 +143,12 @@ const InsurerDashboard = () => {
                                         }`}
                                 >
                                     <div className="flex justify-between items-start mb-2">
-                                        <span className="font-bold text-slate-200 font-mono text-sm">{c.claimNumber}</span>
+                                        <span className="font-bold text-[#1A2130] font-mono text-sm">{c.claimNumber}</span>
                                         <span className="badge badge-primary text-[10px]">{c.claimType}</span>
                                     </div>
 
                                     <div className="flex items-center justify-between mt-2">
-                                        <span className="text-xs font-semibold text-slate-300">{c.status}</span>
+                                        <span className="text-xs font-semibold text-[#1A2130]">{c.status}</span>
                                         <SlaBadge status={sla.status} remainingMinutes={sla.remaining} isPaused={sla.isPaused} />
                                     </div>
                                 </div>
@@ -162,9 +162,9 @@ const InsurerDashboard = () => {
                     <div className="lg:col-span-8 space-y-6">
                         {/* Top Control Header */}
                         <div className="glass-panel p-6 space-y-6">
-                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E0ECF8] pb-4">
                                 <div>
-                                    <div className="text-xs text-slate-400 font-mono">Claim Reference: {selectedClaim.claimNumber}</div>
+                                    <div className="text-xs text-[#6B7A94] font-mono">Claim Reference: {selectedClaim.claimNumber}</div>
                                     <h2 className="text-xl font-bold text-white mt-0.5">{selectedClaim.procedureDetails?.procedureType || 'Eye Procedure'}</h2>
                                 </div>
                                 <div>
@@ -224,7 +224,7 @@ const InsurerDashboard = () => {
 
                             {/* Raise Query Drawer */}
                             {['IN_REVIEW', 'PRE_AUTH_SUBMITTED'].includes(selectedClaim.status) && (
-                                <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
+                                <div className="p-4 rounded-xl bg-white/80 border border-[#E0ECF8] space-y-3">
                                     <div className="text-xs font-bold text-amber-400 flex items-center gap-1.5">
                                         <AlertCircle className="w-4 h-4" />
                                         Raise Document Query to Hospital / Patient (Pauses SLA Clock)
@@ -250,7 +250,7 @@ const InsurerDashboard = () => {
 
                         {/* Adjudication Results Breakdown */}
                         <div className="glass-panel p-6 space-y-6">
-                            <h3 className="text-base font-bold text-white border-b border-slate-800 pb-3 flex items-center justify-between">
+                            <h3 className="text-base font-bold text-white border-b border-[#E0ECF8] pb-3 flex items-center justify-between">
                                 <span>Adjudication Rules Output</span>
                                 {selectedClaim.adjudicationResult && (
                                     <span className="badge badge-success">Engine Executed</span>
@@ -261,14 +261,14 @@ const InsurerDashboard = () => {
                                 <>
                                     <div className="grid grid-cols-3 gap-4 text-center">
                                         <div className="p-3 glass-card">
-                                            <div className="text-xs text-slate-400">Total Billed</div>
-                                            <div className="text-lg font-bold text-slate-200 mt-1">₹{selectedClaim.adjudicationResult.totalBilled?.toLocaleString()}</div>
+                                            <div className="text-xs text-[#6B7A94]">Total Billed</div>
+                                            <div className="text-lg font-bold text-[#1A2130] mt-1">₹{selectedClaim.adjudicationResult.totalBilled?.toLocaleString()}</div>
                                         </div>
-                                        <div className="p-3 glass-card bg-emerald-950/20 border-emerald-500/30">
+                                        <div className="p-3 glass-card bg-emerald-950/20 border-[#BBE7CB]">
                                             <div className="text-xs text-emerald-400 font-semibold">Approved Payable</div>
                                             <div className="text-xl font-extrabold text-emerald-400 mt-1">₹{selectedClaim.adjudicationResult.approvedAmount?.toLocaleString()}</div>
                                         </div>
-                                        <div className="p-3 glass-card bg-red-950/20 border-red-500/30">
+                                        <div className="p-3 glass-card bg-red-950/20 border-[#F5C2C2]">
                                             <div className="text-xs text-red-400 font-semibold">Total Deductions</div>
                                             <div className="text-xl font-extrabold text-red-400 mt-1">₹{selectedClaim.adjudicationResult.totalDeductions?.toLocaleString()}</div>
                                         </div>
@@ -277,7 +277,7 @@ const InsurerDashboard = () => {
                                     <ClauseTable deductions={selectedClaim.adjudicationResult.itemizedDeductions} />
                                 </>
                             ) : (
-                                <div className="p-6 text-center text-slate-400 text-sm">
+                                <div className="p-6 text-center text-[#6B7A94] text-sm">
                                     Click "Run Step 1 Adjudication Engine" above to compute rule deductions.
                                 </div>
                             )}
@@ -285,20 +285,20 @@ const InsurerDashboard = () => {
 
                         {/* Audit Logs */}
                         <div className="glass-panel p-6 space-y-4">
-                            <h3 className="text-sm font-bold text-slate-200 border-b border-slate-800 pb-2">
+                            <h3 className="text-sm font-bold text-[#1A2130] border-b border-[#E0ECF8] pb-2">
                                 Append-Only Audit History ({auditLogs.length} Events)
                             </h3>
                             <div className="space-y-2 max-h-48 overflow-y-auto">
                                 {auditLogs.map((log, idx) => (
                                     <div key={idx} className="p-2.5 glass-card flex items-center justify-between text-xs">
                                         <div>
-                                            <span className="font-semibold text-indigo-300">{log.fromState} ➔ {log.toState}</span>
-                                            <span className="text-slate-400 ml-2">({log.action})</span>
-                                            {log.notes && <div className="text-slate-400 italic text-[11px]">{log.notes}</div>}
+                                            <span className="font-semibold text-[#1565D8]">{log.fromState} ➔ {log.toState}</span>
+                                            <span className="text-[#6B7A94] ml-2">({log.action})</span>
+                                            {log.notes && <div className="text-[#6B7A94] italic text-[11px]">{log.notes}</div>}
                                         </div>
                                         <div className="text-right">
                                             <span className="badge badge-info">{log.actorRole}</span>
-                                            <div className="text-[10px] text-slate-500 font-mono mt-0.5">
+                                            <div className="text-[10px] text-[#6B7A94] font-mono mt-0.5">
                                                 {new Date(log.timestamp).toLocaleString()}
                                             </div>
                                         </div>
@@ -308,7 +308,7 @@ const InsurerDashboard = () => {
                         </div>
                     </div>
                 ) : (
-                    <div className="lg:col-span-8 glass-panel p-12 text-center text-slate-500">
+                    <div className="lg:col-span-8 glass-panel p-12 text-center text-[#6B7A94]">
                         Select a claim from the queue to process.
                     </div>
                 )}

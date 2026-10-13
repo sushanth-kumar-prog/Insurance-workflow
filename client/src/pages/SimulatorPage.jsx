@@ -77,12 +77,12 @@ const SimulatorPage = () => {
             {/* Page Header */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 glass-panel p-6">
                 <div>
-                    <div className="flex items-center gap-2 text-indigo-400 font-semibold text-sm mb-1">
+                    <div className="flex items-center gap-2 text-[#1565D8] font-semibold text-sm mb-1">
                         <Calculator className="w-4 h-4" />
                         Dry-Run Rule Engine Simulator
                     </div>
                     <h1 className="text-2xl font-extrabold text-white">Pre-Submission Claim Simulator</h1>
-                    <p className="text-slate-400 text-sm mt-1">
+                    <p className="text-[#6B7A94] text-sm mt-1">
                         Test claim drafts against IRDAI statutory rules, room-rent sublimits, waiting periods & non-payable lists in dry-run mode without writing to database.
                     </p>
                 </div>
@@ -93,7 +93,7 @@ const SimulatorPage = () => {
             </div>
 
             {error && (
-                <div className="p-4 rounded-lg bg-red-950/40 border border-red-500/40 text-red-400 text-sm">
+                <div className="p-4 rounded-lg bg-[#FDECEC] border border-red-500/40 text-red-400 text-sm">
                     {error}
                 </div>
             )}
@@ -103,10 +103,10 @@ const SimulatorPage = () => {
                 <div className="lg:col-span-7 space-y-6">
                     {/* Policy & Claim Controls */}
                     <div className="glass-panel p-6 space-y-4">
-                        <h2 className="text-base font-bold text-slate-200 border-b border-slate-800 pb-2">Policy & Condition Parameters</h2>
+                        <h2 className="text-base font-bold text-[#1A2130] border-b border-[#E0ECF8] pb-2">Policy & Condition Parameters</h2>
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                             <div>
-                                <label className="block text-xs text-slate-400 mb-1">Available Sum Insured (₹)</label>
+                                <label className="block text-xs text-[#6B7A94] mb-1">Available Sum Insured (₹)</label>
                                 <input
                                     type="number"
                                     value={sumInsuredBalance}
@@ -114,7 +114,7 @@ const SimulatorPage = () => {
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs text-slate-400 mb-1">Waiting Period (Months)</label>
+                                <label className="block text-xs text-[#6B7A94] mb-1">Waiting Period (Months)</label>
                                 <input
                                     type="number"
                                     value={waitingPeriodMonths}
@@ -122,7 +122,7 @@ const SimulatorPage = () => {
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs text-slate-400 mb-1">Elapsed Months</label>
+                                <label className="block text-xs text-[#6B7A94] mb-1">Elapsed Months</label>
                                 <input
                                     type="number"
                                     value={elapsedMonths}
@@ -130,7 +130,7 @@ const SimulatorPage = () => {
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs text-slate-400 mb-1">Room Rent Cap (₹/day)</label>
+                                <label className="block text-xs text-[#6B7A94] mb-1">Room Rent Cap (₹/day)</label>
                                 <input
                                     type="number"
                                     value={roomCap}
@@ -138,7 +138,7 @@ const SimulatorPage = () => {
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs text-slate-400 mb-1">IOL Tariff Cap (₹)</label>
+                                <label className="block text-xs text-[#6B7A94] mb-1">IOL Tariff Cap (₹)</label>
                                 <input
                                     type="number"
                                     value={iolTariffCap}
@@ -146,7 +146,7 @@ const SimulatorPage = () => {
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs text-slate-400 mb-1">Eye Surgery Side</label>
+                                <label className="block text-xs text-[#6B7A94] mb-1">Eye Surgery Side</label>
                                 <select value={eyeSide} onChange={(e) => setEyeSide(e.target.value)}>
                                     <option value="LEFT">Left Eye</option>
                                     <option value="RIGHT">Right Eye</option>
@@ -156,7 +156,7 @@ const SimulatorPage = () => {
                         </div>
 
                         <div className="flex items-center gap-6 pt-2">
-                            <label className="flex items-center gap-2 text-xs font-semibold text-slate-300 cursor-pointer">
+                            <label className="flex items-center gap-2 text-xs font-semibold text-[#1A2130] cursor-pointer">
                                 <input
                                     type="checkbox"
                                     checked={isPreExisting}
@@ -166,7 +166,7 @@ const SimulatorPage = () => {
                                 Is Pre-Existing Condition?
                             </label>
 
-                            <label className="flex items-center gap-2 text-xs font-semibold text-slate-300 cursor-pointer">
+                            <label className="flex items-center gap-2 text-xs font-semibold text-[#1A2130] cursor-pointer">
                                 <input
                                     type="checkbox"
                                     checked={documents.includes('IOL_STICKER')}
@@ -183,8 +183,8 @@ const SimulatorPage = () => {
 
                     {/* Bill Items Form */}
                     <div className="glass-panel p-6 space-y-4">
-                        <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                            <h2 className="text-base font-bold text-slate-200">Bill Items Breakdown</h2>
+                        <div className="flex items-center justify-between border-b border-[#E0ECF8] pb-2">
+                            <h2 className="text-base font-bold text-[#1A2130]">Bill Items Breakdown</h2>
                             <button onClick={handleAddItem} className="btn-secondary py-1 px-3 text-xs">
                                 <Plus className="w-3.5 h-3.5" />
                                 Add Item
@@ -232,7 +232,7 @@ const SimulatorPage = () => {
                                     </div>
                                     <button
                                         onClick={() => handleRemoveItem(idx)}
-                                        className="p-2 text-slate-500 hover:text-red-400 transition-colors"
+                                        className="p-2 text-[#6B7A94] hover:text-red-400 transition-colors"
                                     >
                                         <Trash2 className="w-4 h-4" />
                                     </button>
@@ -245,10 +245,10 @@ const SimulatorPage = () => {
                 {/* Right Column: Simulation Output */}
                 <div className="lg:col-span-5 space-y-6">
                     {result ? (
-                        <div className="glass-panel p-6 space-y-6 border-indigo-500/30">
-                            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <div className="glass-panel p-6 space-y-6 border-[#B9D6F5]">
+                            <div className="flex items-center justify-between border-b border-[#E0ECF8] pb-3">
                                 <span className="badge badge-info text-xs">Dry-Run Output</span>
-                                <span className="text-xs text-slate-400 font-mono">
+                                <span className="text-xs text-[#6B7A94] font-mono">
                                     Evaluated at: {new Date(result.evaluatedAt).toLocaleTimeString()}
                                 </span>
                             </div>
@@ -256,14 +256,14 @@ const SimulatorPage = () => {
                             {/* Financial Summary KPI Cards */}
                             <div className="grid grid-cols-3 gap-3 text-center">
                                 <div className="p-3 glass-card">
-                                    <div className="text-xs text-slate-400 uppercase font-semibold">Total Billed</div>
-                                    <div className="text-lg font-bold text-slate-200 mt-1">₹{result.summary.totalBilled.toLocaleString()}</div>
+                                    <div className="text-xs text-[#6B7A94] uppercase font-semibold">Total Billed</div>
+                                    <div className="text-lg font-bold text-[#1A2130] mt-1">₹{result.summary.totalBilled.toLocaleString()}</div>
                                 </div>
-                                <div className="p-3 glass-card bg-emerald-950/20 border-emerald-500/30">
+                                <div className="p-3 glass-card bg-emerald-950/20 border-[#BBE7CB]">
                                     <div className="text-xs text-emerald-400 uppercase font-semibold">Est. Approval</div>
                                     <div className="text-xl font-extrabold text-emerald-400 mt-1">₹{result.summary.estimatedApprovalAmount.toLocaleString()}</div>
                                 </div>
-                                <div className="p-3 glass-card bg-red-950/20 border-red-500/30">
+                                <div className="p-3 glass-card bg-red-950/20 border-[#F5C2C2]">
                                     <div className="text-xs text-red-400 uppercase font-semibold">Total Deductions</div>
                                     <div className="text-xl font-extrabold text-red-400 mt-1">₹{result.summary.totalDeductions.toLocaleString()}</div>
                                 </div>
@@ -271,7 +271,7 @@ const SimulatorPage = () => {
 
                             {/* Fraud Flags */}
                             {result.fraudWarningFlags && result.fraudWarningFlags.length > 0 && (
-                                <div className="p-4 rounded-lg bg-amber-950/30 border border-amber-500/40 text-amber-300 space-y-2">
+                                <div className="p-4 rounded-lg bg-[#FEF3E2] border border-[#F5D9AE] text-[#B45309] space-y-2">
                                     <div className="flex items-center gap-2 font-bold text-sm">
                                         <AlertTriangle className="w-4 h-4 text-amber-400" />
                                         Fraud & Anomaly Warning Flags ({result.fraudWarningFlags.length})
@@ -288,14 +288,14 @@ const SimulatorPage = () => {
 
                             {/* Missing Documents */}
                             {result.missingDocumentFlags && result.missingDocumentFlags.length > 0 && (
-                                <div className="p-4 rounded-lg bg-red-950/30 border border-red-500/40 text-red-300 space-y-2">
+                                <div className="p-4 rounded-lg bg-red-950/30 border border-red-500/40 text-[#B91C1C] space-y-2">
                                     <div className="flex items-center gap-2 font-bold text-sm">
                                         <FileWarning className="w-4 h-4 text-red-400" />
                                         Missing Required Documents ({result.missingDocumentFlags.length})
                                     </div>
                                     <div className="space-y-1">
                                         {result.missingDocumentFlags.map((doc, i) => (
-                                            <div key={i} className="text-xs font-mono bg-red-900/40 px-2 py-1 rounded">
+                                            <div key={i} className="text-xs font-mono bg-[#FDECEC] px-2 py-1 rounded">
                                                 📄 {doc}
                                             </div>
                                         ))}
@@ -305,15 +305,15 @@ const SimulatorPage = () => {
 
                             {/* Itemized Deductions Clause Table */}
                             <div>
-                                <h3 className="text-sm font-bold text-slate-200 mb-3">Itemised Clause Explanations</h3>
+                                <h3 className="text-sm font-bold text-[#1A2130] mb-3">Itemised Clause Explanations</h3>
                                 <ClauseTable deductions={result.itemizedDeductions} />
                             </div>
                         </div>
                     ) : (
-                        <div className="glass-panel p-12 text-center text-slate-500 flex flex-col items-center justify-center space-y-3 min-h-[400px]">
+                        <div className="glass-panel p-12 text-center text-[#6B7A94] flex flex-col items-center justify-center space-y-3 min-h-[400px]">
                             <ShieldCheck className="w-12 h-12 text-slate-700" />
-                            <div className="text-base font-semibold text-slate-400">No Simulation Run Yet</div>
-                            <p className="text-xs text-slate-500 max-w-xs">
+                            <div className="text-base font-semibold text-[#6B7A94]">No Simulation Run Yet</div>
+                            <p className="text-xs text-[#6B7A94] max-w-xs">
                                 Configure policy parameters and bill items on the left, then click "Run Simulation" to evaluate adjudication rules.
                             </p>
                         </div>

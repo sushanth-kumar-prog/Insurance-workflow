@@ -112,7 +112,7 @@ export default function OutOfPocketExplorer({ policyId, policyDetails }) {
 
   if (!policyId) {
     return (
-      <div className="glass-card p-5 text-sm text-slate-400 text-center">
+      <div className="glass-card p-5 text-sm text-[#6B7A94] text-center">
         Log in as a claimant to see personalised estimates.
       </div>
     );
@@ -122,13 +122,13 @@ export default function OutOfPocketExplorer({ policyId, policyDetails }) {
     <div className="glass-card p-5 space-y-5">
       <div>
         <h3 className="font-semibold text-base">💡 Out-of-Pocket Explorer</h3>
-        <p className="text-slate-400 text-sm mt-0.5">
+        <p className="text-[#6B7A94] text-sm mt-0.5">
           Slide to compare lens types. Figures come from the live adjudication engine.
         </p>
       </div>
 
       <div className="space-y-2">
-        <div className="flex justify-between text-xs text-slate-400">
+        <div className="flex justify-between text-xs text-[#6B7A94]">
           {LENS_OPTIONS.map((l) => <span key={l.id}>{l.label}</span>)}
         </div>
         <input
@@ -143,46 +143,46 @@ export default function OutOfPocketExplorer({ policyId, policyDetails }) {
         />
       </div>
 
-      <div className="border border-slate-700 rounded-xl px-4 py-3 flex items-start justify-between bg-slate-800/40">
+      <div className="border border-[#E0ECF8] rounded-xl px-4 py-3 flex items-start justify-between bg-[#F7FAFE]">
         <div>
-          <p className="font-semibold text-indigo-300">{lens.label} IOL</p>
-          <p className="text-xs text-slate-400">{lens.subtitle}</p>
+          <p className="font-semibold text-[#1565D8]">{lens.label} IOL</p>
+          <p className="text-xs text-[#6B7A94]">{lens.subtitle}</p>
         </div>
-        <p className="text-lg font-bold text-indigo-300">{inr(lens.cost)}</p>
+        <p className="text-lg font-bold text-[#1565D8]">{inr(lens.cost)}</p>
       </div>
 
-      {loading && <div className="text-center py-4 text-slate-400 text-sm animate-pulse">Calculating with your policy rules…</div>}
+      {loading && <div className="text-center py-4 text-[#6B7A94] text-sm animate-pulse">Calculating with your policy rules…</div>}
 
       {error && !loading && (
-        <div className="text-red-300 text-sm bg-red-950/40 border border-red-500/30 rounded-lg px-3 py-2">⚠ {error}</div>
+        <div className="text-[#B91C1C] text-sm bg-[#FDECEC] border border-[#F5C2C2] rounded-lg px-3 py-2">⚠ {error}</div>
       )}
 
       {result && !loading && (
         <div className="space-y-3">
           <div className="grid grid-cols-3 gap-2 text-center">
-            <div className="bg-slate-800/60 rounded-xl p-3">
-              <p className="text-xs text-slate-400 uppercase tracking-wide">Total Bill</p>
+            <div className="bg-[#F7FAFE] rounded-xl p-3">
+              <p className="text-xs text-[#6B7A94] uppercase tracking-wide">Total Bill</p>
               <p className="text-sm font-bold mt-1">{inr(totalBilled)}</p>
             </div>
-            <div className="bg-emerald-950/40 rounded-xl p-3">
+            <div className="bg-[#E7F7EE] rounded-xl p-3">
               <p className="text-xs text-emerald-400 uppercase tracking-wide">Insurer Pays</p>
-              <p className="text-sm font-bold text-emerald-300 mt-1">{inr(approved)}</p>
+              <p className="text-sm font-bold text-[#15803D] mt-1">{inr(approved)}</p>
             </div>
-            <div className="bg-amber-950/40 rounded-xl p-3">
+            <div className="bg-[#FEF3E2] rounded-xl p-3">
               <p className="text-xs text-amber-400 uppercase tracking-wide">You Pay</p>
-              <p className="text-sm font-bold text-amber-300 mt-1">{inr(outOfPocket)}</p>
+              <p className="text-sm font-bold text-[#B45309] mt-1">{inr(outOfPocket)}</p>
             </div>
           </div>
 
           {deductions.length > 0 && (
             <div>
-              <p className="text-xs font-medium text-slate-400 uppercase tracking-wide mb-1">Policy deductions</p>
-              <ul className="divide-y divide-slate-700 border border-slate-700 rounded-lg overflow-hidden text-sm">
+              <p className="text-xs font-medium text-[#6B7A94] uppercase tracking-wide mb-1">Policy deductions</p>
+              <ul className="divide-y divide-[#E0ECF8] border border-[#E0ECF8] rounded-lg overflow-hidden text-sm">
                 {deductions.map((d, i) => (
                   <li key={i} className="flex justify-between px-3 py-2">
-                    <span className="text-slate-300">
+                    <span className="text-[#1A2130]">
                       {d.description || d.reasonCode}
-                      {d.policyClauseRef && <span className="ml-1 text-xs text-slate-500 font-mono">({d.policyClauseRef})</span>}
+                      {d.policyClauseRef && <span className="ml-1 text-xs text-[#6B7A94] font-mono">({d.policyClauseRef})</span>}
                     </span>
                     <span className="text-red-400 font-medium shrink-0 ml-2">− {inr(d.deductedAmount)}</span>
                   </li>
@@ -192,8 +192,8 @@ export default function OutOfPocketExplorer({ policyId, policyDetails }) {
           )}
 
           {(flags.length > 0 || missingDocs.length > 0) && (
-            <div className="bg-amber-950/30 border border-amber-500/30 rounded-lg px-3 py-2 text-sm space-y-1">
-              {flags.map((f, i) => <p key={i} className="text-amber-300">⚑ {f}</p>)}
+            <div className="bg-[#FEF3E2] border border-[#F5D9AE] rounded-lg px-3 py-2 text-sm space-y-1">
+              {flags.map((f, i) => <p key={i} className="text-[#B45309]">⚑ {f}</p>)}
               {missingDocs.map((d, i) => <p key={i} className="text-amber-400">📎 Missing: {d}</p>)}
             </div>
           )}

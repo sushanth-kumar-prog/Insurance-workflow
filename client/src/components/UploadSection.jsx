@@ -78,11 +78,11 @@ export default function UploadSection({ claimId, onUploaded }) {
   }
 
   return (
-    <div className="border border-dashed border-slate-600 rounded-xl p-4 space-y-3 bg-slate-800/30">
-      <p className="text-sm font-medium text-slate-200">Upload Supporting Documents</p>
+    <div className="border border-dashed border-[#E0ECF8] rounded-xl p-4 space-y-3 bg-[#F7FAFE]">
+      <p className="text-sm font-medium text-[#1A2130]">Upload Supporting Documents</p>
 
       <label className="flex flex-col items-center gap-2 cursor-pointer">
-        <div className="flex items-center gap-2 px-4 py-2 bg-slate-900 border border-slate-600 rounded-lg text-sm text-slate-300 hover:bg-slate-800 transition">
+        <div className="flex items-center gap-2 px-4 py-2 bg-white border border-[#E0ECF8] rounded-lg text-sm text-[#1A2130] hover:bg-white transition">
           <span>📎</span>
           <span>{selectedFiles.length > 0 ? `${selectedFiles.length} file(s) selected` : 'Choose files…'}</span>
         </div>
@@ -95,11 +95,11 @@ export default function UploadSection({ claimId, onUploaded }) {
           className="sr-only"
           disabled={uploadStatus === 'uploading'}
         />
-        <p className="text-xs text-slate-500">PDF, JPG, PNG or WEBP · Max 5 MB each · Max 5 files</p>
+        <p className="text-xs text-[#6B7A94]">PDF, JPG, PNG or WEBP · Max 5 MB each · Max 5 files</p>
       </label>
 
       {selectedFiles.length > 0 && (
-        <ul className="text-xs text-slate-400 space-y-0.5">
+        <ul className="text-xs text-[#6B7A94] space-y-0.5">
           {selectedFiles.map((f, i) => (
             <li key={i} className="flex items-center gap-1">
               <span>📄</span>
@@ -117,10 +117,10 @@ export default function UploadSection({ claimId, onUploaded }) {
       )}
 
       {uploadStatus === 'success' && (
-        <p className="text-emerald-300 text-sm">✅ Documents uploaded successfully.</p>
+        <p className="text-[#15803D] text-sm">✅ Documents uploaded successfully.</p>
       )}
       {uploadError && (
-        <p className="text-red-300 text-sm">⚠ {uploadError}</p>
+        <p className="text-[#B91C1C] text-sm">⚠ {uploadError}</p>
       )}
 
       <button

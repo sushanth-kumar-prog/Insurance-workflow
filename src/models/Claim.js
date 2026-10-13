@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+// timestamps gives createdAt/updatedAt, which the dashboard and reports sort on.
+// NOTE: this belongs on the Schema constructor - the third argument to
+// mongoose.model() is the collection name, not options.
 const claimSchema = new mongoose.Schema({
     claimNumber: { type: String, unique: true, index: true, required: true },
     policyId: { type: mongoose.Schema.Types.ObjectId, ref: 'Policy', required: true },
@@ -52,6 +55,6 @@ const claimSchema = new mongoose.Schema({
         status: { type: String, enum: ['OPEN', 'UPHELD', 'REJECTED'], default: 'OPEN' },
         filedAt: { type: Date, default: Date.now }
     }]
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Claim', claimSchema);

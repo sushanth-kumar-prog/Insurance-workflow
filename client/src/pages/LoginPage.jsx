@@ -69,24 +69,24 @@ const LoginPage = () => {
     return (
         <div className="max-w-md mx-auto my-12 p-8 glass-panel shadow-2xl relative overflow-hidden">
             <div className="text-center mb-8">
-                <div className="inline-flex p-3 rounded-2xl bg-indigo-600/20 border border-indigo-500/30 text-indigo-400 mb-3">
+                <div className="inline-flex p-3 rounded-2xl bg-indigo-600/20 border border-[#B9D6F5] text-[#1565D8] mb-3">
                     <Shield className="w-8 h-8" />
                 </div>
                 <h1 className="text-2xl font-extrabold text-white">InsureFlow Portal</h1>
-                <p className="text-sm text-slate-400 mt-1">Claim Settlement & RBAC Authentication</p>
+                <p className="text-sm text-[#6B7A94] mt-1">Claim Settlement & RBAC Authentication</p>
             </div>
 
             {/* Tabs */}
-            <div className="flex bg-slate-900/80 p-1 rounded-lg mb-6 border border-slate-800">
+            <div className="flex bg-white/80 p-1 rounded-lg mb-6 border border-[#E0ECF8]">
                 <button
-                    className={`flex-1 py-2 text-sm font-semibold rounded-md transition-all ${isLogin ? 'bg-indigo-600 text-white shadow-md' : 'text-slate-400 hover:text-slate-200'
+                    className={`flex-1 py-2 text-sm font-semibold rounded-md transition-all ${isLogin ? 'bg-indigo-600 text-white shadow-md' : 'text-[#6B7A94] hover:text-[#1A2130]'
                         }`}
                     onClick={() => setIsLogin(true)}
                 >
                     Sign In
                 </button>
                 <button
-                    className={`flex-1 py-2 text-sm font-semibold rounded-md transition-all ${!isLogin ? 'bg-indigo-600 text-white shadow-md' : 'text-slate-400 hover:text-slate-200'
+                    className={`flex-1 py-2 text-sm font-semibold rounded-md transition-all ${!isLogin ? 'bg-indigo-600 text-white shadow-md' : 'text-[#6B7A94] hover:text-[#1A2130]'
                         }`}
                     onClick={() => setIsLogin(false)}
                 >
@@ -95,7 +95,7 @@ const LoginPage = () => {
             </div>
 
             {error && (
-                <div className="p-3 mb-6 rounded-lg bg-red-950/40 border border-red-500/40 text-red-400 text-sm">
+                <div className="p-3 mb-6 rounded-lg bg-[#FDECEC] border border-red-500/40 text-red-400 text-sm">
                     {error}
                 </div>
             )}
@@ -103,9 +103,9 @@ const LoginPage = () => {
             <form onSubmit={handleSubmit} className="space-y-4">
                 {!isLogin && (
                     <div>
-                        <label className="block text-xs font-semibold text-slate-300 mb-1">Full Name</label>
+                        <label className="block text-xs font-semibold text-[#1A2130] mb-1">Full Name</label>
                         <div className="relative">
-                            <User className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
+                            <User className="w-4 h-4 text-[#6B7A94] absolute left-3 top-3" />
                             <input
                                 type="text"
                                 required
@@ -119,9 +119,9 @@ const LoginPage = () => {
                 )}
 
                 <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+                    <label className="block text-xs font-semibold text-[#1A2130] mb-1">Email Address</label>
                     <div className="relative">
-                        <Mail className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
+                        <Mail className="w-4 h-4 text-[#6B7A94] absolute left-3 top-3" />
                         <input
                             type="email"
                             required
@@ -134,9 +134,9 @@ const LoginPage = () => {
                 </div>
 
                 <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">Password</label>
+                    <label className="block text-xs font-semibold text-[#1A2130] mb-1">Password</label>
                     <div className="relative">
-                        <Lock className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
+                        <Lock className="w-4 h-4 text-[#6B7A94] absolute left-3 top-3" />
                         <input
                             type="password"
                             required
@@ -151,7 +151,7 @@ const LoginPage = () => {
                 {!isLogin && (
                     <>
                         <div>
-                            <label className="block text-xs font-semibold text-slate-300 mb-1">User Role</label>
+                            <label className="block text-xs font-semibold text-[#1A2130] mb-1">User Role</label>
                             <select value={role} onChange={(e) => setRole(e.target.value)} className="w-full">
                                 <option value="CLAIMANT">Claimant / Policyholder</option>
                                 <option value="HOSPITAL_DESK">Hospital Desk Desk Officer</option>
@@ -164,9 +164,9 @@ const LoginPage = () => {
 
                         {role === 'HOSPITAL_DESK' && (
                             <div>
-                                <label className="block text-xs font-semibold text-slate-300 mb-1">Hospital Name</label>
+                                <label className="block text-xs font-semibold text-[#1A2130] mb-1">Hospital Name</label>
                                 <div className="relative">
-                                    <Building className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
+                                    <Building className="w-4 h-4 text-[#6B7A94] absolute left-3 top-3" />
                                     <input
                                         type="text"
                                         placeholder="City Eye Care Super Specialty"
@@ -186,51 +186,51 @@ const LoginPage = () => {
             </form>
 
             {/* Quick Demo Login Shortcuts */}
-            <div className="mt-8 pt-6 border-t border-slate-800">
-                <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 text-center flex items-center justify-center gap-1.5">
-                    <UserCheck className="w-3.5 h-3.5 text-indigo-400" />
+            <div className="mt-8 pt-6 border-t border-[#E0ECF8]">
+                <div className="text-xs font-semibold text-[#6B7A94] uppercase tracking-wider mb-3 text-center flex items-center justify-center gap-1.5">
+                    <UserCheck className="w-3.5 h-3.5 text-[#1565D8]" />
                     Quick 1-Click Demo Login
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                     <button
                         type="button"
                         onClick={() => handleDemoLogin('CLAIMANT', 'patient@demo.com', 'Patient Sushanth')}
-                        className="p-2 text-xs font-medium rounded-lg bg-slate-800/80 border border-slate-700 hover:border-indigo-500 text-slate-300 hover:text-white text-left transition-colors"
+                        className="p-2 text-xs font-medium rounded-lg bg-[#F7FAFE] border border-[#E0ECF8] hover:border-indigo-500 text-[#1A2130] hover:text-white text-left transition-colors"
                     >
                         👤 Claimant
                     </button>
                     <button
                         type="button"
                         onClick={() => handleDemoLogin('HOSPITAL_DESK', 'hospital@demo.com', 'Hospital Admin')}
-                        className="p-2 text-xs font-medium rounded-lg bg-slate-800/80 border border-slate-700 hover:border-indigo-500 text-slate-300 hover:text-white text-left transition-colors"
+                        className="p-2 text-xs font-medium rounded-lg bg-[#F7FAFE] border border-[#E0ECF8] hover:border-indigo-500 text-[#1A2130] hover:text-white text-left transition-colors"
                     >
                         🏥 Hospital Desk
                     </button>
                     <button
                         type="button"
                         onClick={() => handleDemoLogin('VERIFIER', 'verifier@demo.com', 'Verifier Officer')}
-                        className="p-2 text-xs font-medium rounded-lg bg-slate-800/80 border border-slate-700 hover:border-indigo-500 text-slate-300 hover:text-white text-left transition-colors"
+                        className="p-2 text-xs font-medium rounded-lg bg-[#F7FAFE] border border-[#E0ECF8] hover:border-indigo-500 text-[#1A2130] hover:text-white text-left transition-colors"
                     >
                         🔍 Claim Verifier
                     </button>
                     <button
                         type="button"
                         onClick={() => handleDemoLogin('MEDICAL_OFFICER', 'medical@demo.com', 'Dr. Medical Officer')}
-                        className="p-2 text-xs font-medium rounded-lg bg-slate-800/80 border border-slate-700 hover:border-indigo-500 text-slate-300 hover:text-white text-left transition-colors"
+                        className="p-2 text-xs font-medium rounded-lg bg-[#F7FAFE] border border-[#E0ECF8] hover:border-indigo-500 text-[#1A2130] hover:text-white text-left transition-colors"
                     >
                         🩺 Medical Officer
                     </button>
                     <button
                         type="button"
                         onClick={() => handleDemoLogin('APPROVER', 'approver@demo.com', 'Chief Approver')}
-                        className="p-2 text-xs font-medium rounded-lg bg-slate-800/80 border border-slate-700 hover:border-indigo-500 text-slate-300 hover:text-white text-left transition-colors"
+                        className="p-2 text-xs font-medium rounded-lg bg-[#F7FAFE] border border-[#E0ECF8] hover:border-indigo-500 text-[#1A2130] hover:text-white text-left transition-colors"
                     >
                         ⚡ Chief Approver
                     </button>
                     <button
                         type="button"
                         onClick={() => handleDemoLogin('FINANCE', 'finance@demo.com', 'Finance Manager')}
-                        className="p-2 text-xs font-medium rounded-lg bg-slate-800/80 border border-slate-700 hover:border-indigo-500 text-slate-300 hover:text-white text-left transition-colors"
+                        className="p-2 text-xs font-medium rounded-lg bg-[#F7FAFE] border border-[#E0ECF8] hover:border-indigo-500 text-[#1A2130] hover:text-white text-left transition-colors"
                     >
                         💳 Finance Desk
                     </button>

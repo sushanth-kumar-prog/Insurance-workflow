@@ -79,7 +79,7 @@ export default function LineItemDisputeModal({ claimId, deduction, onDisputeFile
     <>
       <button
         onClick={openModal}
-        className="text-xs text-indigo-300 hover:text-indigo-100 underline underline-offset-2 font-medium"
+        className="text-xs text-[#1565D8] hover:text-indigo-100 underline underline-offset-2 font-medium"
       >
         Dispute
       </button>
@@ -89,16 +89,16 @@ export default function LineItemDisputeModal({ claimId, deduction, onDisputeFile
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
           onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}
         >
-          <div className="bg-slate-900 text-slate-100 border border-slate-700 rounded-2xl shadow-2xl w-full max-w-md">
-            <div className="flex items-center justify-between px-5 py-4 border-b border-slate-700">
+          <div className="bg-white text-[#1A2130] border border-[#E0ECF8] rounded-2xl shadow-2xl w-full max-w-md">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-[#E0ECF8]">
               <h2 className="font-semibold text-base">Dispute Deduction</h2>
-              <button onClick={closeModal} className="text-slate-400 hover:text-slate-200 text-xl leading-none">×</button>
+              <button onClick={closeModal} className="text-[#6B7A94] hover:text-[#1A2130] text-xl leading-none">×</button>
             </div>
 
             <div className="px-5 py-4 space-y-4">
-              <div className="bg-red-950/40 border border-red-500/30 rounded-lg p-3 text-sm space-y-1">
+              <div className="bg-[#FDECEC] border border-[#F5C2C2] rounded-lg p-3 text-sm space-y-1">
                 <div className="flex justify-between items-start">
-                  <span className="font-medium text-red-300">{displayReason}</span>
+                  <span className="font-medium text-[#B91C1C]">{displayReason}</span>
                   {amount != null && (
                     <span className="font-bold text-red-400">− ₹{Number(amount).toLocaleString('en-IN')}</span>
                   )}
@@ -112,7 +112,7 @@ export default function LineItemDisputeModal({ claimId, deduction, onDisputeFile
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1">
+                <label className="block text-sm font-medium text-[#1A2130] mb-1">
                   Why do you disagree? <span className="text-red-400">*</span>
                 </label>
                 <textarea
@@ -126,8 +126,8 @@ export default function LineItemDisputeModal({ claimId, deduction, onDisputeFile
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1">
-                  Supporting evidence <span className="text-slate-500 font-normal">(optional)</span>
+                <label className="block text-sm font-medium text-[#1A2130] mb-1">
+                  Supporting evidence <span className="text-[#6B7A94] font-normal">(optional)</span>
                 </label>
                 <input
                   type="text"
@@ -139,17 +139,17 @@ export default function LineItemDisputeModal({ claimId, deduction, onDisputeFile
               </div>
 
               {errorMsg && (
-                <p className="text-red-300 text-sm bg-red-950/40 border border-red-500/30 rounded-lg px-3 py-2">⚠ {errorMsg}</p>
+                <p className="text-[#B91C1C] text-sm bg-[#FDECEC] border border-[#F5C2C2] rounded-lg px-3 py-2">⚠ {errorMsg}</p>
               )}
 
               {status === 'success' && (
-                <p className="text-emerald-300 text-sm bg-emerald-950/40 border border-emerald-500/30 rounded-lg px-3 py-2">
+                <p className="text-[#15803D] text-sm bg-[#E7F7EE] border border-[#BBE7CB] rounded-lg px-3 py-2">
                   ✅ Dispute filed. A verifier will review and respond.
                 </p>
               )}
             </div>
 
-            <div className="flex justify-end gap-2 px-5 py-4 border-t border-slate-700">
+            <div className="flex justify-end gap-2 px-5 py-4 border-t border-[#E0ECF8]">
               <button
                 onClick={closeModal}
                 disabled={status === 'submitting'}
